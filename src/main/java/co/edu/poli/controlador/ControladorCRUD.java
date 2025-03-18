@@ -8,6 +8,9 @@ import co.edu.poli.modelo.Cliente;
 import co.edu.poli.modelo.Producto;
 import co.edu.poli.modelo.ProductoAlimenticio;
 import co.edu.poli.modelo.ProductoElectrico;
+import co.edu.poli.servicio.DaoCliente;
+import co.edu.poli.servicio.DaoProductoAlimenticio;
+import co.edu.poli.servicio.DaoProductoElectrico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,12 +19,15 @@ import javafx.scene.control.TextField;
 
 public class ControladorCRUD {
 
-    private ControladorCliente metodosCliente;
-    private ControladorProductos metodosProduct;
+    private DaoCliente metodosCliente;
+    private DaoProductoAlimenticio metodosProductalimento;
+    private DaoProductoElectrico metodosProductelectrico;
+
 
     public ControladorCRUD() throws ClassNotFoundException, SQLException{
-        this.metodosCliente = new ControladorCliente();
-        this.metodosProduct = new ControladorProductos();
+        this.metodosCliente = new DaoCliente();
+        this.metodosProductalimento = new DaoProductoAlimenticio();
+        this.metodosProductelectrico = new DaoProductoElectrico();
     }
 
     @FXML
@@ -67,7 +73,7 @@ public class ControladorCRUD {
     void clonarAlimento(ActionEvent event) {
         Producto mango = new ProductoAlimenticio(1, "Mango", 567);
         Producto mangoClonado = mango.cloneProducts();
-        metodosProduct.insertarPa(mangoClonado.getId(), mangoClonado.getDescripcion(), ((ProductoAlimenticio) mangoClonado).getAporteCalorico());
+        metodosProductalimento.insertar(mangoClonado);
         JOptionPane.showMessageDialog(null, "Producto Mango, Clonado!!" + mangoClonado.toString());
     }
 
@@ -75,14 +81,14 @@ public class ControladorCRUD {
     void clonarElectrico(ActionEvent event) {
         Producto bateria = new ProductoElectrico(1, "Bateria", 15);
         Producto bateriaClonada = bateria.cloneProducts();
-        metodosProduct.insertarPe(bateriaClonada.getId(), bateriaClonada.getDescripcion(), ((ProductoElectrico) bateriaClonada).getVoltajeEntrada());
+        metodosProductelectrico.insertar(bateriaClonada);
         JOptionPane.showMessageDialog(null, "Producto Bateria, Clonado!!" + bateriaClonada.toString());
     }
 
     @FXML
     void consulta(ActionEvent event) {
         try {
-        List<Cliente> clientes = metodosCliente.obtenerCl();
+        List<Cliente> clientes = metodosCliente.obtenerTodos();
         textAreaClientes.clear();
         if (clientes.isEmpty()) {
             textAreaClientes.appendText("No se encontraron clientes.");
@@ -106,7 +112,7 @@ public class ControladorCRUD {
         else{
             int id_numero = Integer.parseInt(id);
             try {
-                JOptionPane.showMessageDialog(null, "Cliente Eliminado: "  + metodosCliente.eliminarCl(id_numero));
+                JOptionPane.showMessageDialog(null, "Cliente Eliminado: "  + metodosCliente.eliminar(id_numero));
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Ocurrio un error en la Eliminacion");
             }
@@ -122,7 +128,7 @@ public class ControladorCRUD {
         else{
             try {
                 Cliente cliente = new Cliente(0,insertarNombre.getText());
-                JOptionPane.showMessageDialog(null, "Cliente Ingresado: "  + metodosCliente.insertarCl(cliente));
+                JOptionPane.showMessageDialog(null, "Cliente Ingresado: "  + metodosCliente.insertar(cliente));
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Ocurrio un error en la Insercion");
             }
@@ -134,7 +140,7 @@ public class ControladorCRUD {
     void unaConsulta(ActionEvent event) {
         try {
             int id = Integer.parseInt(consultarId.getText());
-            Cliente cliente = metodosCliente.obtenerCl(id);
+            Cliente cliente = metodosCliente.obtenerPorId(id);
             JOptionPane.showMessageDialog(null, "Cliente encontrado con ID: " + id + " " + cliente.toString());
         } catch (NumberFormatException e) {
             // En caso de que el texto ingresado no sea un número válido
@@ -149,7 +155,7 @@ public class ControladorCRUD {
         String nombre = actualizarNombre.getText();
         try {
             Cliente cliente = new Cliente(id, nombre);
-            JOptionPane.showMessageDialog(null, "Cliente Actualizado: " + metodosCliente.actualizarCl(cliente));
+            JOptionPane.showMessageDialog(null, "Cliente Actualizado: " + metodosCliente.actualizar(cliente));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ocurrió un error al actualizar el cliente.");
         }
