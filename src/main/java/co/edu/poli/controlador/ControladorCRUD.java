@@ -25,6 +25,12 @@ public class ControladorCRUD {
     }
 
     @FXML
+    private TextField actualizarNombre;
+
+    @FXML
+    private TextField actualizarid;
+
+    @FXML
     private Button btt1;
 
     @FXML
@@ -41,6 +47,9 @@ public class ControladorCRUD {
 
     @FXML
     private Button btt6;
+
+    @FXML
+    private Button bttActualizar;
 
     @FXML
     private TextField consultarId;
@@ -130,6 +139,19 @@ public class ControladorCRUD {
         } catch (NumberFormatException e) {
             // En caso de que el texto ingresado no sea un número válido
             JOptionPane.showMessageDialog(null, "El ID debe ser un número");
+        }
+    }
+
+    
+    @FXML
+    void actulizarCliente(ActionEvent event) {
+        int id = Integer.parseInt(actualizarid.getText());
+        String nombre = actualizarNombre.getText();
+        try {
+            Cliente cliente = new Cliente(id, nombre);
+            JOptionPane.showMessageDialog(null, "Cliente Actualizado: " + metodosCliente.actualizarCl(cliente));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrió un error al actualizar el cliente.");
         }
     }
 
