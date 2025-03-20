@@ -5,6 +5,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import co.edu.poli.modelo.Cliente;
+import co.edu.poli.modelo.Departamento;
+import co.edu.poli.modelo.Empleado;
 import co.edu.poli.modelo.Producto;
 import co.edu.poli.modelo.ProductoAlimenticio;
 import co.edu.poli.modelo.ProductoElectrico;
@@ -55,7 +57,7 @@ public class ControladorCRUD {
     private Button btt6;
 
     @FXML
-    private Button bttActualizar;
+    private Button bttActualizar, bttComposite;
 
     @FXML
     private TextField consultarId;
@@ -67,7 +69,7 @@ public class ControladorCRUD {
     private TextField insertarNombre;
 
     @FXML
-    private TextArea textAreaClientes;
+    private TextArea textAreaClientes, mostrarJerarquia;
 
     @FXML
     void clonarAlimento(ActionEvent event) {
@@ -143,7 +145,6 @@ public class ControladorCRUD {
             Cliente cliente = metodosCliente.obtenerPorId(id);
             JOptionPane.showMessageDialog(null, "Cliente encontrado con ID: " + id + " " + cliente.toString());
         } catch (NumberFormatException e) {
-            // En caso de que el texto ingresado no sea un número válido
             JOptionPane.showMessageDialog(null, "El ID debe ser un número");
         }
     }
@@ -159,6 +160,43 @@ public class ControladorCRUD {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ocurrió un error al actualizar el cliente.");
         }
+    }
+    @FXML
+    void Adaptar(ActionEvent event) {
+
+    }
+    @FXML
+    void clickBuildProveedor(ActionEvent event) {
+
+    }
+
+    @FXML
+    void clickMedio(ActionEvent event) {
+
+    }
+    @FXML
+    void ClickComposite(ActionEvent event) {
+        Empleado emp1 = new Empleado("Juan Pérez", "Desarrollador");
+        Empleado emp2 = new Empleado("María López", "Diseñadora");
+        Empleado emp3 = new Empleado("Carlos Gómez", "Gerente");
+        Empleado emp4 = new Empleado("Ana Martínez", "Directora");
+        
+        Departamento deptDesarrollo = new Departamento("Desarrollo");
+        Departamento deptDiseno = new Departamento("Diseño");
+        Departamento deptTecnologia = new Departamento("Tecnología");
+        Departamento deptEmpresa = new Departamento("Empresa");
+        
+        deptDesarrollo.agregarMiembro(emp1);
+        deptDiseno.agregarMiembro(emp2);
+        
+        deptTecnologia.agregarMiembro(deptDesarrollo);
+        deptTecnologia.agregarMiembro(deptDiseno);
+        deptTecnologia.agregarMiembro(emp3);
+        
+        deptEmpresa.agregarMiembro(deptTecnologia);
+        deptEmpresa.agregarMiembro(emp4);
+        
+        mostrarJerarquia.setText(deptEmpresa.mostrar(0));
     }
 
 }
