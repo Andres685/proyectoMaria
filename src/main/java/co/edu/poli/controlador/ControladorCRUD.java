@@ -58,6 +58,7 @@ public class ControladorCRUD {
         JOptionPane.showMessageDialog(null, "Producto Mango, Clonado!! " + mangoClonado.toString());
     }
 
+
     @FXML
     void clonarElectrico(ActionEvent event) {
         Producto bateria = new ProductoElectrico(1, "Bateria", 15);
@@ -134,6 +135,19 @@ public class ControladorCRUD {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ocurrió un error al actualizar el cliente.");
         }
+    }
+    @FXML
+    void Adaptar(ActionEvent event) {
+
+    }
+    @FXML
+    void clickMedio(ActionEvent event) {
+
+    }
+
+    @FXML
+    void ClickComposite(ActionEvent event) {
+
     }
     @FXML
     void clickBuildProveedor(ActionEvent event) {
