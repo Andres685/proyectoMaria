@@ -4,17 +4,11 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-import co.edu.poli.modelo.AdaptadorNequi;
-import co.edu.poli.modelo.AdaptadorPayPal;
-import co.edu.poli.modelo.Certificacion;
 import co.edu.poli.modelo.Cliente;
-import co.edu.poli.modelo.Evaluacion;
-import co.edu.poli.modelo.MetodoPago;
-import co.edu.poli.modelo.PoliticaEntrega;
 import co.edu.poli.modelo.Producto;
 import co.edu.poli.modelo.ProductoAlimenticio;
 import co.edu.poli.modelo.ProductoElectrico;
-import co.edu.poli.modelo.Proveedor;
+
 import co.edu.poli.servicio.DaoCliente;
 import co.edu.poli.servicio.DaoProductoAlimenticio;
 import co.edu.poli.servicio.DaoProductoElectrico;
@@ -52,49 +46,6 @@ public class ControladorCRUD {
     @FXML
     private TextArea textAreaClientes;
 
-    @FXML
-    public void initialize() {
-        bttMedio.getItems().addAll("Nequi", "PayPal");
-    }
-    @FXML
-    void Adaptar(ActionEvent event) {
-        MetodoPago metodoPago;
-        String opcion = bttMedio.getValue();
-        if(opcion != null && !valorPago.getText().isEmpty()) {
-            switch (opcion) {
-                case "Nequi":
-                    metodoPago = new AdaptadorNequi();
-                    break;
-                case "PayPal":
-                    metodoPago = new AdaptadorPayPal();
-                    break;
-                default:
-                    metodoPago = null;
-                    break;
-            }
-            int valor = Integer.parseInt(valorPago.getText());
-            String mensaje = metodoPago.realizarPago(valor);
-            JOptionPane.showMessageDialog(null, mensaje);
-        }
-
-    }
-
-    @FXML
-    void clickMedio(ActionEvent event) {
-        String opcion = bttMedio.getValue();
-        if(opcion != null) {
-            switch (opcion) {
-                case "Nequi":
-                    valorPago.setPromptText("Valor a pagar con Nequi");
-                    break;
-                case "PayPal":
-                    break;
-                default:
-                    valorPago.setPromptText("Valor a pagar");
-                    break;
-            }
-        }
-    }
 
     @FXML
     void clonarAlimento(ActionEvent event) {
@@ -180,22 +131,5 @@ public class ControladorCRUD {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ocurrió un error al actualizar el cliente.");
         }
-    }
-    @FXML
-    void clickBuildProveedor(ActionEvent event) {
-        Proveedor.Builder proveedor1 = new Proveedor.Builder();
-        if(certificacion.isSelected()) {
-            proveedor1.certificacion(new Certificacion());
-        }
-        if(evaluacion.isSelected()){
-            proveedor1.evaluacion(new Evaluacion());
-        }
-        if (polientrega.isSelected()) {
-            proveedor1.politicaEntrega(new PoliticaEntrega());
-        }
-        Proveedor proveedor = proveedor1.build();
-        JOptionPane.showMessageDialog(null, proveedor.mostrarInfo());
-        
-
     }
 }
