@@ -50,24 +50,6 @@ public class ControladorCRUD {
     @FXML
     private TextArea textAreaClientes;
 
-
-    @FXML
-    void clickMedio(ActionEvent event) {
-        String opcion = bttMedio.getValue();
-        if(opcion != null) {
-            switch (opcion) {
-                case "Nequi":
-                    valorPago.setPromptText("Valor a pagar con Nequi");
-                    break;
-                case "PayPal":
-                    break;
-                default:
-                    valorPago.setPromptText("Valor a pagar");
-                    break;
-            }
-        }
-    }
-
     @FXML
     void clonarAlimento(ActionEvent event) {
         Producto mango = new ProductoAlimenticio(1, "Mango", 567);
