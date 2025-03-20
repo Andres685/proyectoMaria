@@ -4,7 +4,10 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 
+import co.edu.poli.modelo.AdaptadorNequi;
+import co.edu.poli.modelo.AdaptadorPayPal;
 import co.edu.poli.modelo.Cliente;
+import co.edu.poli.modelo.MetodoPago;
 import co.edu.poli.modelo.Producto;
 import co.edu.poli.modelo.ProductoAlimenticio;
 import co.edu.poli.modelo.ProductoElectrico;
@@ -31,8 +34,6 @@ public class ControladorCRUD {
         this.metodosProductalimento = new DaoProductoAlimenticio();
         this.metodosProductelectrico = new DaoProductoElectrico();
     }
-    @FXML
-    private CheckBox certificacion,evaluacion,polientrega;
 
     @FXML
     private Button btt1, btt2, btt3, btt4, btt5, btt6, bttActualizar, bttAdapatar,  bttBuilder;;
@@ -45,6 +46,51 @@ public class ControladorCRUD {
 
     @FXML
     private TextArea textAreaClientes;
+
+    @FXML
+    public void initialize() {
+        bttMedio.getItems().addAll("Nequi", "PayPal");
+    }
+    @FXML
+    void Adaptar(ActionEvent event) {
+        MetodoPago metodoPago;
+        String opcion = bttMedio.getValue();
+        if(opcion != null && !valorPago.getText().isEmpty()) {
+            switch (opcion) {
+                case "Nequi":
+                    metodoPago = new AdaptadorNequi();
+                    break;
+                case "PayPal":
+                    metodoPago = new AdaptadorPayPal();
+                    break;
+                default:
+                    metodoPago = null;
+                    break;
+            }
+            int valor = Integer.parseInt(valorPago.getText());
+            valorPago.clear();
+            String mensaje = metodoPago.realizarPago(valor);
+            bttMedio.setValue(null);
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
+    }
+
+    @FXML
+    void clickMedio(ActionEvent event) {
+        String opcion = bttMedio.getValue();
+        if(opcion != null) {
+            switch (opcion) {
+                case "Nequi":
+                    valorPago.setPromptText("Valor a pagar con Nequi");
+                    break;
+                case "PayPal":
+                    break;
+                default:
+                    valorPago.setPromptText("Valor a pagar");
+                    break;
+            }
+        }
+    }
 
 
     @FXML
