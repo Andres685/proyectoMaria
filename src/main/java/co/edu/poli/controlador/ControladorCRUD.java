@@ -6,17 +6,22 @@ import javax.swing.JOptionPane;
 
 import co.edu.poli.modelo.AdaptadorNequi;
 import co.edu.poli.modelo.AdaptadorPayPal;
+import co.edu.poli.modelo.Certificacion;
 import co.edu.poli.modelo.Cliente;
+import co.edu.poli.modelo.Evaluacion;
 import co.edu.poli.modelo.MetodoPago;
+import co.edu.poli.modelo.PoliticaEntrega;
 import co.edu.poli.modelo.Producto;
 import co.edu.poli.modelo.ProductoAlimenticio;
 import co.edu.poli.modelo.ProductoElectrico;
+import co.edu.poli.modelo.Proveedor;
 import co.edu.poli.servicio.DaoCliente;
 import co.edu.poli.servicio.DaoProductoAlimenticio;
 import co.edu.poli.servicio.DaoProductoElectrico;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -32,21 +37,17 @@ public class ControladorCRUD {
         this.metodosProductalimento = new DaoProductoAlimenticio();
         this.metodosProductelectrico = new DaoProductoElectrico();
     }
+    @FXML
+    private CheckBox certificacion,evaluacion,polientrega;
 
     @FXML
-    private TextField actualizarNombre;
-
-    @FXML
-    private TextField actualizarid;
-
-    @FXML
-    private Button btt1, btt2, btt3, btt4, btt5, btt6, bttActualizar, bttAdapatar;
+    private Button btt1, btt2, btt3, btt4, btt5, btt6, bttActualizar, bttAdapatar,  bttBuilder;;
 
     @FXML
     private ComboBox<String> bttMedio;
 
     @FXML
-    private TextField consultarId, eliminarId, insertarNombre, productoAlimento, productoElectrico, valorPago;
+    private TextField consultarId, eliminarId, insertarNombre, productoAlimento, productoElectrico, valorPago, nombreProveedor, actualizarid, actualizarNombre;
 
     @FXML
     private TextArea textAreaClientes;
@@ -179,5 +180,22 @@ public class ControladorCRUD {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ocurrió un error al actualizar el cliente.");
         }
+    }
+    @FXML
+    void clickBuildProveedor(ActionEvent event) {
+        Proveedor.Builder proveedor1 = new Proveedor.Builder();
+        if(certificacion.isSelected()) {
+            proveedor1.certificacion(new Certificacion());
+        }
+        if(evaluacion.isSelected()){
+            proveedor1.evaluacion(new Evaluacion());
+        }
+        if (polientrega.isSelected()) {
+            proveedor1.politicaEntrega(new PoliticaEntrega());
+        }
+        Proveedor proveedor = proveedor1.build();
+        JOptionPane.showMessageDialog(null, proveedor.mostrarInfo());
+        
+
     }
 }
