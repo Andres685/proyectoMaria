@@ -50,6 +50,7 @@ public class ControladorCRUD {
     @FXML
     public void initialize() {
         bttMedio.getItems().addAll("Nequi", "PayPal");
+        System.out.println("hola  mundo");
     }
     @FXML
     void Adaptar(ActionEvent event) {
