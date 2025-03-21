@@ -5,6 +5,7 @@ public class Proveedor {
     private final Evaluacion evaluacion;
     private final PoliticaEntrega politicaEntrega;
     private final Certificacion certificacion;
+    
     private Proveedor(Builder builder) {
         this.evaluacion = builder.evaluacion;
         this.politicaEntrega = builder.politicaEntrega;
