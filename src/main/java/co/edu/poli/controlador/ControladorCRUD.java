@@ -4,15 +4,19 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-//import co.edu.poli.modelo.AdaptadorNequi;
-//import co.edu.poli.modelo.AdaptadorPayPal;
+import co.edu.poli.modelo.AdaptadorNequi;
+import co.edu.poli.modelo.AdaptadorPayPal;
 import co.edu.poli.modelo.Cliente;
 import co.edu.poli.modelo.Departamento;
 import co.edu.poli.modelo.Empleado;
-//import co.edu.poli.modelo.MetodoPago;
+import co.edu.poli.modelo.Evaluacion;
+import co.edu.poli.modelo.Certificacion;
+import co.edu.poli.modelo.MetodoPago;
+import co.edu.poli.modelo.PoliticaEntrega;
 import co.edu.poli.modelo.Producto;
 import co.edu.poli.modelo.ProductoAlimenticio;
 import co.edu.poli.modelo.ProductoElectrico;
+import co.edu.poli.modelo.Proveedor;
 import co.edu.poli.servicio.DaoCliente;
 import co.edu.poli.servicio.DaoProductoAlimenticio;
 import co.edu.poli.servicio.DaoProductoElectrico;
@@ -41,6 +45,8 @@ public class ControladorCRUD {
 
     @FXML
     private ComboBox<String> bttMedio;
+    @FXML
+    private CheckBox certificacion, polientrega,evaluacion;
 
     @FXML
     private TextField consultarId, eliminarId, insertarNombre, productoAlimento, productoElectrico, valorPago, nombreProveedor, actualizarid, actualizarNombre;
@@ -54,7 +60,7 @@ public class ControladorCRUD {
         bttMedio.getItems().addAll("Nequi", "PayPal");
         System.out.println("hola  mundo");
     }
-    /* 
+    
     @FXML
     void Adaptar(ActionEvent event) {
         MetodoPago metodoPago;
@@ -78,7 +84,6 @@ public class ControladorCRUD {
             JOptionPane.showMessageDialog(null, mensaje);
         }
     }
-        */
 
     @FXML
     void clickMedio(ActionEvent event) {
@@ -184,7 +189,7 @@ public class ControladorCRUD {
             JOptionPane.showMessageDialog(null, "Ocurrió un error al actualizar el cliente.");
         }
     }
-    /* 
+    
     @FXML
     void clickBuildProveedor(ActionEvent event) {
         Proveedor.Builder proveedor1 = new Proveedor.Builder();
@@ -201,7 +206,8 @@ public class ControladorCRUD {
         Proveedor proveedor = proveedor1.build();
         JOptionPane.showMessageDialog(null, proveedor.mostrarInfo());
     }
-        */
+
+    @FXML
     void ClickComposite(ActionEvent event) {
         Empleado emp1 = new Empleado("Juan Pérez", "Desarrollador");
         Empleado emp2 = new Empleado("María López", "Diseñadora");
