@@ -17,7 +17,7 @@ public class DaoCliente implements IDao<Cliente> {
 
 	@Override
 	public List<Cliente> obtenerTodos() {
-		String sentencia = "SELECT id,name FROM clientes";
+		String sentencia = "SELECT id,name FROM clientes ORDER BY id";
 		List<Cliente> clientes = new ArrayList<>();
 		try(PreparedStatement consulta = ConexCl.prepareStatement(sentencia);
 			ResultSet resultados = consulta.executeQuery();){
