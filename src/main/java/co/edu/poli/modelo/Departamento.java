@@ -34,10 +34,4 @@ public class Departamento implements IEmpresa{
     
         return resultado + "\t".repeat(nivel) + "}";
     }
-    @Override
-    public List<IEmpresa> getMiembros() {
-        return miembros;
-    }
-
-    
 }
