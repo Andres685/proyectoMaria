@@ -4,16 +4,15 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-import co.edu.poli.modelo.AdaptadorNequi;
-import co.edu.poli.modelo.AdaptadorPayPal;
+//import co.edu.poli.modelo.AdaptadorNequi;
+//import co.edu.poli.modelo.AdaptadorPayPal;
 import co.edu.poli.modelo.Cliente;
 import co.edu.poli.modelo.Departamento;
 import co.edu.poli.modelo.Empleado;
-import co.edu.poli.modelo.MetodoPago;
+//import co.edu.poli.modelo.MetodoPago;
 import co.edu.poli.modelo.Producto;
 import co.edu.poli.modelo.ProductoAlimenticio;
 import co.edu.poli.modelo.ProductoElectrico;
-
 import co.edu.poli.servicio.DaoCliente;
 import co.edu.poli.servicio.DaoProductoAlimenticio;
 import co.edu.poli.servicio.DaoProductoElectrico;
@@ -55,6 +54,7 @@ public class ControladorCRUD {
         bttMedio.getItems().addAll("Nequi", "PayPal");
         System.out.println("hola  mundo");
     }
+    /* 
     @FXML
     void Adaptar(ActionEvent event) {
         MetodoPago metodoPago;
@@ -78,6 +78,7 @@ public class ControladorCRUD {
             JOptionPane.showMessageDialog(null, mensaje);
         }
     }
+        */
 
     @FXML
     void clickMedio(ActionEvent event) {
@@ -104,6 +105,7 @@ public class ControladorCRUD {
         metodosProductalimento.insertar(mangoClonado);
         JOptionPane.showMessageDialog(null, "Producto Mango, Clonado!! " + mangoClonado.toString());
     }
+
 
     @FXML
     void clonarElectrico(ActionEvent event) {
@@ -182,13 +184,29 @@ public class ControladorCRUD {
             JOptionPane.showMessageDialog(null, "Ocurrió un error al actualizar el cliente.");
         }
     }
+    /* 
     @FXML
+    void clickBuildProveedor(ActionEvent event) {
+        Proveedor.Builder proveedor1 = new Proveedor.Builder();
+
+        if(certificacion.isSelected()) {
+            proveedor1.certificacion(new Certificacion());
+        }
+        if(evaluacion.isSelected()){
+            proveedor1.evaluacion(new Evaluacion());
+        }
+        if (polientrega.isSelected()) {
+            proveedor1.politicaEntrega(new PoliticaEntrega());
+        }
+        Proveedor proveedor = proveedor1.build();
+        JOptionPane.showMessageDialog(null, proveedor.mostrarInfo());
+    }
+        */
     void ClickComposite(ActionEvent event) {
         Empleado emp1 = new Empleado("Juan Pérez", "Desarrollador");
         Empleado emp2 = new Empleado("María López", "Diseñadora");
         Empleado emp3 = new Empleado("Carlos Gómez", "Gerente");
         Empleado emp4 = new Empleado("Ana Martínez", "Directora");
-        
         Departamento deptDesarrollo = new Departamento("Desarrollo");
         Departamento deptDiseno = new Departamento("Diseño");
         Departamento deptTecnologia = new Departamento("Tecnología");
@@ -205,9 +223,5 @@ public class ControladorCRUD {
         deptEmpresa.agregarMiembro(emp4);
         
         mostrarJerarquia.setText(deptEmpresa.mostrar(0));
-    }
-    @FXML
-    private void clickBuildProveedor(ActionEvent event) {
-    // Código del evento aquí
     }
 }
