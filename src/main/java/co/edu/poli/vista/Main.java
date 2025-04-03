@@ -1,6 +1,4 @@
 package co.edu.poli.vista;
-
-import co.edu.poli.controlador.ControladorCRUD;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

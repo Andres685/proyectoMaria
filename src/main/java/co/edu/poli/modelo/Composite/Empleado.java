@@ -21,11 +21,4 @@ public class Empleado implements IEmpresa {
     public String mostrar(int nivel) {
         return "\t".repeat(nivel) + "Empleado{nombre='" + nombre + "': Cargo='" + cargo + "'}";
     }
-
-    @Override
-    public List<IEmpresa> getMiembros() {
-        return Collections.emptyList();
-    }
-
-
 }

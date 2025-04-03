@@ -3,20 +3,31 @@ package co.edu.poli.controlador;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
-
-import co.edu.poli.modelo.AdaptadorNequi;
-import co.edu.poli.modelo.AdaptadorPayPal;
 import co.edu.poli.modelo.Cliente;
-import co.edu.poli.modelo.Departamento;
-import co.edu.poli.modelo.Empleado;
-import co.edu.poli.modelo.Evaluacion;
-import co.edu.poli.modelo.Certificacion;
-import co.edu.poli.modelo.MetodoPago;
-import co.edu.poli.modelo.PoliticaEntrega;
 import co.edu.poli.modelo.Producto;
 import co.edu.poli.modelo.ProductoAlimenticio;
 import co.edu.poli.modelo.ProductoElectrico;
-import co.edu.poli.modelo.Proveedor;
+import co.edu.poli.modelo.Adapter.AdaptadorNequi;
+import co.edu.poli.modelo.Adapter.AdaptadorPayPal;
+import co.edu.poli.modelo.Adapter.MetodoPago;
+import co.edu.poli.modelo.Bridge.Documento;
+import co.edu.poli.modelo.Bridge.Envio;
+import co.edu.poli.modelo.Bridge.EnvioInternacional;
+import co.edu.poli.modelo.Bridge.EnvioNacional;
+import co.edu.poli.modelo.Bridge.Fragil;
+import co.edu.poli.modelo.Bridge.Mercancia;
+import co.edu.poli.modelo.Bridge.Normal;
+import co.edu.poli.modelo.Builder.Certificacion;
+import co.edu.poli.modelo.Builder.Evaluacion;
+import co.edu.poli.modelo.Builder.PoliticaEntrega;
+import co.edu.poli.modelo.Builder.Proveedor;
+import co.edu.poli.modelo.Composite.Departamento;
+import co.edu.poli.modelo.Composite.Empleado;
+import co.edu.poli.modelo.DecoratorP.CarritoCompras;
+import co.edu.poli.modelo.DecoratorP.CarritoComprasNormal;
+import co.edu.poli.modelo.DecoratorP.Descuento;
+import co.edu.poli.modelo.DecoratorP.EnvioGratis;
+import co.edu.poli.modelo.DecoratorP.Puntos;
 import co.edu.poli.servicio.DaoCliente;
 import co.edu.poli.servicio.DaoProductoAlimenticio;
 import co.edu.poli.servicio.DaoProductoElectrico;
@@ -41,23 +52,25 @@ public class ControladorCRUD {
     }
 
     @FXML
-    private Button btt1, btt2, btt3, btt4, btt5, btt6, bttActualizar, bttAdapatar,  bttBuilder,bttComposite;;
+    private Button btt1, btt2, btt3, btt4, btt5, btt6, bttActualizar, bttAdapatar,  bttBuilder,bttComposite, bttEnvio, bttCarrito,bttAplicar;
 
     @FXML
-    private ComboBox<String> bttMedio;
+    private ComboBox<String> bttMedio, bttOpcionEnvio, bttMercancia;
     @FXML
-    private CheckBox certificacion, polientrega,evaluacion;
+    private CheckBox certificacion, polientrega,evaluacion,envioGratis,devolucion,puntos,envioNacional, envioInternacional,mercanciaFragil, mercanciaDocumento,mercanciaNormal, descuento;
 
     @FXML
     private TextField consultarId, eliminarId, insertarNombre, productoAlimento, productoElectrico, valorPago, nombreProveedor, actualizarid, actualizarNombre;
 
 
     @FXML
-    private TextArea textAreaClientes, mostrarJerarquia;
+    private TextArea textAreaClientes, mostrarJerarquia, mostrarCarrito;
 
     @FXML
     public void initialize() {
         bttMedio.getItems().addAll("Nequi", "PayPal");
+        bttOpcionEnvio.getItems().addAll("Nacional", "Internacional");
+        bttMercancia.getItems().addAll("Documento", "Fragil", "Normal");
         System.out.println("hola  mundo");
     }
     
@@ -230,4 +243,52 @@ public class ControladorCRUD {
         
         mostrarJerarquia.setText(deptEmpresa.mostrar(0));
     }
+
+    @FXML
+    void clickEnvio(ActionEvent event){
+        String tipoEnvio = bttOpcionEnvio.getValue();
+        String tipoMercancia = bttMercancia.getValue();
+        if(tipoEnvio!= null && tipoMercancia != null){
+            Mercancia mercancia = null;
+            switch (tipoMercancia) {
+                case "Documento":
+                    mercancia = new Documento();
+                    break;
+                case "Fragil":
+                    mercancia = new Fragil();
+                    break;
+                case "Normal":
+                    mercancia = new Normal();
+                    break;
+            }
+            Envio envio;
+            if(tipoEnvio.equals("Internacional")){
+                envio = new EnvioInternacional(mercancia);
+            }
+            else{
+                envio = new EnvioNacional(mercancia);
+            }
+            JOptionPane.showMessageDialog(null, envio.enviar());
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Debes Especificar Tipo de Envio y de Mercancia", "ERROR!!", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    @FXML
+    void clickAplicar(ActionEvent event){
+        CarritoCompras carritoBae = new CarritoComprasNormal();
+        if(descuento.isSelected()){
+            carritoBae = new Descuento(carritoBae);
+        }
+        if(puntos.isSelected()){
+            carritoBae = new Puntos(carritoBae);
+        }
+        if(envioGratis.isSelected()){
+            carritoBae = new EnvioGratis(carritoBae);
+        }
+        mostrarCarrito.setText(carritoBae.getDescripcion()+ "\nCosto Total: $"+carritoBae.getTotal());
+    }
+
+    
+
 }
