@@ -1,4 +1,4 @@
-package co.edu.poli.modelo;
+package co.edu.poli.modelo.Bridge;
 
 public class EnvioNacional extends Envio{
     public EnvioNacional(Mercancia mercancia){

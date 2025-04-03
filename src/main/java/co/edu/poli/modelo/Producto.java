@@ -1,5 +1,7 @@
 package co.edu.poli.modelo;
 
+import co.edu.poli.modelo.Clone.IProtoTypeClone;
+
 public abstract class Producto implements IProtoTypeClone{
 	private int id;
 	private String descripcion;

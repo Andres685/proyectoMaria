@@ -286,7 +286,7 @@ public class ControladorCRUD {
         if(envioGratis.isSelected()){
             carritoBae = new EnvioGratis(carritoBae);
         }
-        mostrarCarrito.setText(carritoBae.getDescripcion()+ "\nCosto Total: $"+carritoBae.getTotal());
+        mostrarCarrito.setText(carritoBae.getDescripcion()+ "\n--------------------\nCosto Total: $"+carritoBae.getTotal());
     }
 
     

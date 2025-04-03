@@ -1,4 +1,4 @@
-package co.edu.poli.modelo;
+package co.edu.poli.modelo.Builder;
 
 public class Proveedor {
     private static final String NOMBRE = "SERVIENTREGA";

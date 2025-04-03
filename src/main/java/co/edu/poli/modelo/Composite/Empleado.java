@@ -1,7 +1,4 @@
-package co.edu.poli.modelo;
-
-import java.util.Collections;
-import java.util.List;
+package co.edu.poli.modelo.Composite;
 
 public class Empleado implements IEmpresa {
     private String nombre;

@@ -1,4 +1,4 @@
-package co.edu.poli.modelo;
+package co.edu.poli.modelo.Adapter;
 
 public class AdaptadorNequi implements MetodoPago {
     private Nequi nequi;

@@ -1,6 +1,5 @@
-package co.edu.poli.modelo;
+package co.edu.poli.modelo.Composite;
 
-import java.util.List;
 
 public interface IEmpresa {
     String getNombre();

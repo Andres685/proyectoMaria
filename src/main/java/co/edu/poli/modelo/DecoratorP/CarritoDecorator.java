@@ -1,8 +1,8 @@
-package co.edu.poli.modelo;
+package co.edu.poli.modelo.DecoratorP;
 
 abstract class CarritoDecorator implements CarritoCompras {
     protected CarritoCompras carritoAtributos;
-    public CarritoDecorator(CarritoCompras carritoCompras){
+    protected CarritoDecorator(CarritoCompras carritoCompras){
         this.carritoAtributos = carritoCompras;
     }
     public String getDescription() {

@@ -1,4 +1,4 @@
-package co.edu.poli.modelo;
+package co.edu.poli.modelo.DecoratorP;
 
 public class Puntos extends CarritoDecorator{
     public Puntos(CarritoCompras carrito){

@@ -1,4 +1,4 @@
-package co.edu.poli.modelo;
+package co.edu.poli.modelo.Builder;
 
 public class PoliticaEntrega {
     private static final String TIEMPO_ENTREGA = "1 dia con Garantia de Devolucion";
