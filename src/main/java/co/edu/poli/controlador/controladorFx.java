@@ -3,7 +3,10 @@ package co.edu.poli.controlador;
 import javax.print.attribute.standard.JobHoldUntil;
 import javax.swing.JOptionPane;
 
+import co.edu.poli.modelo.PatronFacade.Cliente;
 import co.edu.poli.modelo.PatronFacade.ClienteFacade;
+import co.edu.poli.modelo.PatronFacade.MetodoPago;
+import co.edu.poli.modelo.PatronFacade.Pedidos;
 import co.edu.poli.modelo.PatronFlyWeight.Productos;
 import co.edu.poli.modelo.PatronFlyWeight.Proveedor;
 import co.edu.poli.modelo.PatronFlyWeight.ProveedorFactory;
@@ -18,7 +21,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class controladorFx {
-    private ClienteFacade cliente = new ClienteFacade("Roberto", "roberto@poli.com");
+    private Cliente clientex = new Cliente("Roberto", "roberto@email.com");
+    private MetodoPago metodo = new MetodoPago();
+    private Pedidos pedido = new Pedidos();
+    private ClienteFacade cliente = new ClienteFacade(clientex, metodo, pedido);
     @FXML
     private Button bttActivarMetodo,bttActualizarCliente,bttBloquearMetodo,bttMostrarCliente,bttMostrarMetodo, bttMostrarPedidos,bttMostrarProducto,bttNose,bttRealizarPedido, bttPepsi, bttCoca;
 

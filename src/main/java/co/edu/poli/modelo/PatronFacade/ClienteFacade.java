@@ -5,10 +5,10 @@ public class ClienteFacade {
     private MetodoPago metodosCliente;
     private Pedidos pedidosCliente;
 
-    public ClienteFacade(String nombre, String email) {
-        this.cliente = new Cliente(nombre, email);
-        this.metodosCliente = new MetodoPago();
-        this.pedidosCliente = new Pedidos();
+    public ClienteFacade(Cliente cliente, MetodoPago metodoPago, Pedidos pedidos) {
+        this.cliente = cliente;
+        this.metodosCliente = metodoPago;
+        this.pedidosCliente = pedidos;
     }
 
     public String actualizarCliente(String nombre, String email){
