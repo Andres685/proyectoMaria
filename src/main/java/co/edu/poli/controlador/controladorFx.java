@@ -38,7 +38,7 @@ public class controladorFx {
     @FXML
     void actulizarCliente(ActionEvent event) {
         if(!nombreCliente.getText().isEmpty() && !emailCliente.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, cliente.actualizarCliente(nombreCliente.getText(), emailCliente.getText()));
+            JOptionPane.showMessageDialog(null, cliente.actualizarInformacionCliente(nombreCliente.getText(), emailCliente.getText()));
             nombreCliente.setPromptText("Nombre: " + nombreCliente.getText());
             emailCliente.setPromptText("Email: " + emailCliente.getText());
             nombreCliente.clear();
@@ -51,18 +51,18 @@ public class controladorFx {
 
     @FXML
     void mostrarCliente(ActionEvent event) {
-        JOptionPane.showMessageDialog(null, cliente.mostrarCliente());
+        JOptionPane.showMessageDialog(null, cliente.obtenerResumenCliente());
     }
 
     @FXML
     void mostrarPedidos(ActionEvent event) {
-        JOptionPane.showMessageDialog(null, cliente.mostrarPedidos());
+        JOptionPane.showMessageDialog(null, cliente.obtenerResumenCliente());
     }
 
     @FXML
     void realizarPedido(ActionEvent event) {
         if(!pedidoCliente.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, cliente.realizarPedido(pedidoCliente.getText()));
+            JOptionPane.showMessageDialog(null, cliente.procesarNuevoPedido(pedidoCliente.getText(), "nequi"));
             pedidoCliente.clear();
         }
         else{
@@ -74,7 +74,7 @@ public class controladorFx {
     @FXML
     void activarMetodo(ActionEvent event) {
         if(!metodosCliente.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, cliente.activarMetodoCliente(metodosCliente.getText()));
+            JOptionPane.showMessageDialog(null, cliente.activarMetodo(metodosCliente.getText()));
             metodosCliente.clear();
         }
         else{
@@ -85,7 +85,7 @@ public class controladorFx {
     @FXML
     void bloquearMetodo(ActionEvent event) {
         if(!metodosCliente.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, cliente.bloquearMetodo(metodosCliente.getText()));
+            JOptionPane.showMessageDialog(null, cliente.bloquearMetodoDePago(metodosCliente.getText()));
             metodosCliente.clear();
         }
         else{
@@ -97,7 +97,7 @@ public class controladorFx {
 
     @FXML
     void mostrarMetodo(ActionEvent event) {
-        JOptionPane.showMessageDialog(null, cliente.mostrarMetodos());
+        JOptionPane.showMessageDialog(null, cliente.obtenerResumenCliente());
     }
 
 
