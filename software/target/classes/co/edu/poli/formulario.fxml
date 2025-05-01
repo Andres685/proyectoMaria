@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="439.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.poli.controlador.controladorForm">
+   <children>
+      <Label layoutX="92.0" layoutY="29.0" text="Patron Memento">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="309.0" layoutY="29.0" text="Patron Observer">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Separator layoutX="272.0" layoutY="15.0" orientation="VERTICAL" prefHeight="495.0" prefWidth="1.0" />
+      <TextField editable="false" layoutX="66.0" layoutY="66.0" promptText="Producto: &quot;Iphone&quot;" />
+      <TextField fx:id="precioProducto" layoutX="66.0" layoutY="99.0" promptText="Precio: $1000" />
+      <Button fx:id="guardarEstado" layoutX="91.0" layoutY="137.0" mnemonicParsing="false" onAction="#clickEstado" text="Guardar Estado" />
+      <Button fx:id="mostrarEstados" layoutX="85.0" layoutY="180.0" mnemonicParsing="false" onAction="#clickMostrar" text="Mostrar Estados" />
+      <TableView fx:id="tablaEstados" layoutX="61.0" layoutY="215.0" prefHeight="200.0" prefWidth="150.0">
+        <columns>
+          <TableColumn fx:id="colIndice" prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="colPrecio" prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Button fx:id="deshacerEstado" layoutX="81.0" layoutY="424.0" mnemonicParsing="false" onAction="#clickDeshacer" text="Deshacer Estado" />
+      <Label layoutX="21.0" layoutY="471.0" prefHeight="36.0" prefWidth="84.0" text="Estado Actual:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="estadoActual" layoutX="117.0" layoutY="457.0" prefHeight="58.0" prefWidth="122.0">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="295.0" layoutY="59.0" text="Descuento">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="descuentoAplicar" layoutX="286.0" layoutY="86.0" prefHeight="26.0" prefWidth="116.0" promptText="Descuento: %" />
+      <Button fx:id="aumentar" layoutX="307.0" layoutY="124.0" mnemonicParsing="false" onAction="#clickAumentar" text="AUMENTAR" />
+      <Button fx:id="disminuir" layoutX="309.0" layoutY="154.0" mnemonicParsing="false" onAction="#clickDisminuir" text="DISMINUIR" />
+      <Label fx:id="estadoAct" layoutX="289.0" layoutY="206.0" prefHeight="78.0" prefWidth="122.0">
+         <font>
+            <Font name="System Bold" size="9.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
