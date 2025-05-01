@@ -41,6 +41,12 @@ local.properties
 
 # sbteclipse plugin
 .target
+target/
+.idea/
+*.iml
+*.log
+.classpath
+.project
 
 # Tern plugin
 .tern-project
