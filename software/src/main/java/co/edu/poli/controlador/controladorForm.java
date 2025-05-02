@@ -1,10 +1,12 @@
 package co.edu.poli.controlador;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
+import java.util.Map;
 
 import co.edu.poli.modelo.Producto;
 import co.edu.poli.modelo.Memento.Almacenador;
+import co.edu.poli.modelo.Memento.AlmacenadorDic;
 import co.edu.poli.modelo.Observer.Descuento;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
@@ -20,6 +22,7 @@ import javafx.scene.control.Alert.AlertType;
 public class controladorForm {
     private Producto producto;
     private Almacenador historial;
+    private AlmacenadorDic estados;
     private Descuento descuento;
 
     @FXML
@@ -30,7 +33,6 @@ public class controladorForm {
 
     @FXML
     private TextField precioProducto, descuentoAplicar;
-
     @FXML private TableView<Producto.Memento> tablaEstados;
     @FXML private TableColumn<Producto.Memento, Number> colIndice;
     @FXML private TableColumn<Producto.Memento, Number> colPrecio;
@@ -57,6 +59,8 @@ public class controladorForm {
             )
         );
     }
+
+   
 
 
     @FXML

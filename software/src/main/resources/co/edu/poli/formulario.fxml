@@ -17,13 +17,13 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="309.0" layoutY="29.0" text="Patron Observer">
+      <Label layoutX="308.0" layoutY="29.0" text="Patron Observer">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <Separator layoutX="272.0" layoutY="15.0" orientation="VERTICAL" prefHeight="495.0" prefWidth="1.0" />
-      <TextField editable="false" layoutX="66.0" layoutY="66.0" promptText="Producto: &quot;Iphone&quot;" />
+      <TextField disable="true" editable="false" layoutX="66.0" layoutY="66.0" promptText="Producto: &quot;Iphone&quot;" />
       <TextField fx:id="precioProducto" layoutX="66.0" layoutY="99.0" promptText="Precio: $1000" />
       <Button fx:id="guardarEstado" layoutX="91.0" layoutY="137.0" mnemonicParsing="false" onAction="#clickEstado" text="Guardar Estado" />
       <Button fx:id="mostrarEstados" layoutX="85.0" layoutY="180.0" mnemonicParsing="false" onAction="#clickMostrar" text="Mostrar Estados" />
