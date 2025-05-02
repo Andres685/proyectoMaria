@@ -55,6 +55,8 @@ public class Producto implements Observer{
     public String toString(){
         return "Producto \nNombre: "+nombre+" \nPrecio: $"+ precio;
     }
+
+    
     @Override
     public void actualizar(Descuento descuento, String accion) {
         if(accion.equals("Aumentar")){

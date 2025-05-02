@@ -30,7 +30,7 @@ public class controladorFormDic {
     private TextField añoProducto;
 
     @FXML
-    private TextField añoReDes;
+    private TextField añoReDes, nombreProducto;
 
     @FXML private TableView<Map.Entry<String, Producto.Memento>> tablaEstados;
     @FXML private TableColumn<Map.Entry<String, Producto.Memento>, String> colIndice;
@@ -133,6 +133,7 @@ public class controladorFormDic {
     void clickEstado(ActionEvent event) {
         if(!(añoProducto.getText().isEmpty() && precioProducto.getText().isEmpty())){
             double precio = Double.parseDouble(precioProducto.getText());
+            //producto.setNombre(nombreProducto.getText());
             producto.setPrecio(precio);
             estados.guardar(añoProducto.getText());
             añoProducto.clear();

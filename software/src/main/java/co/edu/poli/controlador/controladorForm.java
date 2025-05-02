@@ -32,7 +32,7 @@ public class controladorForm {
     private Label estadoActual, estadoAct;
 
     @FXML
-    private TextField precioProducto, descuentoAplicar;
+    private TextField precioProducto, descuentoAplicar, nombreProducto;
     @FXML private TableView<Producto.Memento> tablaEstados;
     @FXML private TableColumn<Producto.Memento, Number> colIndice;
     @FXML private TableColumn<Producto.Memento, Number> colPrecio;
@@ -73,6 +73,7 @@ public class controladorForm {
     void clickEstado(ActionEvent event) {
         if(!precioProducto.getText().isEmpty()){
             double precio = Double.parseDouble(precioProducto.getText());
+            //producto.setNombre(nombreProducto.getText());
             producto.setPrecio(precio);
             historial.guardar();
             estadoActual.setText(producto.toString());

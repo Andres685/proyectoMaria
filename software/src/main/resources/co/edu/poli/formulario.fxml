@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="439.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.poli.controlador.controladorForm">
    <children>
       <Label layoutX="92.0" layoutY="29.0" text="Patron Memento">
@@ -23,7 +22,7 @@
          </font>
       </Label>
       <Separator layoutX="272.0" layoutY="15.0" orientation="VERTICAL" prefHeight="495.0" prefWidth="1.0" />
-      <TextField disable="true" editable="false" layoutX="66.0" layoutY="66.0" promptText="Producto: &quot;Iphone&quot;" />
+      <TextField fx:id="nombreProducto" disable="true" editable="false" layoutX="66.0" layoutY="66.0" promptText="Producto: &quot;Iphone&quot;" />
       <TextField fx:id="precioProducto" layoutX="66.0" layoutY="99.0" promptText="Precio: $1000" />
       <Button fx:id="guardarEstado" layoutX="91.0" layoutY="137.0" mnemonicParsing="false" onAction="#clickEstado" text="Guardar Estado" />
       <Button fx:id="mostrarEstados" layoutX="85.0" layoutY="180.0" mnemonicParsing="false" onAction="#clickMostrar" text="Mostrar Estados" />

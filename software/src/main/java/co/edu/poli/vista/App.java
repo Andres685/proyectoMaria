@@ -18,7 +18,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException { 
-        AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/co/edu/poli/formulario.fxml"));
+        AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/co/edu/poli/formulario_copy.fxml"));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
