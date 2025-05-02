@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 
 public class controladorFormDic {
     private Producto producto;
+    private Producto producto2;
     private AlmacenadorDic estados;
     private Descuento descuento;
 
@@ -65,9 +66,11 @@ public class controladorFormDic {
 
      @FXML
     public void initialize() {
-        producto = new Producto("iPhone", 1000.0);
+        producto = new Producto("iPhone", 1000);
+        producto2=new Producto("Samsung", 1500);
         descuento = new Descuento();
         descuento.añadir(producto);
+        descuento.añadir(producto2);
         estados = new AlmacenadorDic(producto);
         estados.guardar("2025");
 
@@ -91,10 +94,10 @@ public class controladorFormDic {
             int descuentos = Integer.parseInt(descuentoAplicar.getText());
             descuento.setPorcentaje(descuentos, accion);
             estados.guardar(añoProducto.getText());
-            estadoActual.setText(producto.toString());
+            estadoActual.setText("Estado del Producto Con Memento\n" + producto.toString());
             añoProducto.clear();
             estadoAct.setText("");
-            estadoAct.setText("Estado de " + accion + "\nGuardado");
+            estadoAct.setText("Estado de " + accion + "\nGuardado" + "\n1:" +producto.toString() + "\n2:" + producto2.toString());
         }
         else{
             Alert alerta = new Alert(AlertType.ERROR);
