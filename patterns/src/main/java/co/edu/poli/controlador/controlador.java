@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -37,6 +38,7 @@ public class controlador {
         pedio.agregarProductos(p1);
         pedio.agregarProductos(p2);
         pedio.agregarProductos(p3);
+        estadoActual.setText(estadoActual.getText() + " " + contexto.getEstado());
     }
     @FXML
     private Button bttAplicar, bttAplicarProducto,  bttAgregarProducto,  bttRealizarPedido,  bttRegistrarCliente;
@@ -48,10 +50,11 @@ public class controlador {
 
     @FXML
     private Button bttPagar;
+    @FXML
+    private Label estadoActual;
 
     @FXML
     private TextField descuentoProducto, descuentoPedido, descripcionProducto, correoCliente, descripcionNuevo, nombreCliente, precioNuevo;
-
 
     @FXML
     void clickAplicar(ActionEvent event) {
@@ -141,22 +144,25 @@ public class controlador {
     @FXML
     void clickEEntregar(ActionEvent event) {
         showAlert(contexto.entregarPedido(), AlertType.INFORMATION, true);
+        estadoActual.setText("Estado Actual: " + contexto.getEstado());
     }
 
     @FXML
     void clickEnviar(ActionEvent event) {
         showAlert(contexto.enviarPedido(), AlertType.INFORMATION, true);
+        estadoActual.setText("Estado Actual: " + contexto.getEstado());
     }
 
     @FXML
     void clickPagar(ActionEvent event) {
         showAlert(contexto.realizarPago(), AlertType.INFORMATION, true);
+        estadoActual.setText("Estado Actual: " + contexto.getEstado());
     }
     @FXML
     void clickReiniciar(ActionEvent event) {
-         showAlert("Estado Del Pedido: " + pedio.toString()+"\n"+contexto.getEstado() + "\nReiniciado", AlertType.INFORMATION, true);
+        showAlert("Estado Del Pedido: " + pedio.toString()+"\n"+contexto.getEstado() + "\nReiniciado", AlertType.INFORMATION, true);
         contexto.setEstado(new EstadoNuevo());
-       
+        estadoActual.setText("Estado Actual: " + contexto.getEstado());
     }
 
     private void showAlert(String mensaje, AlertType alerta, boolean mostrarText){

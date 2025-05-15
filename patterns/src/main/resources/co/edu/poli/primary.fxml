@@ -47,5 +47,6 @@
       <Button fx:id="bttEntregar" layoutX="201.0" layoutY="156.0" mnemonicParsing="false" onAction="#clickEEntregar" text="Entregar" />
       <Button fx:id="bttReiniciar" layoutX="201.0" layoutY="197.0" mnemonicParsing="false" onAction="#clickReiniciar" text="Reiniciar" />
       <Separator layoutX="174.0" layoutY="189.0" prefWidth="200.0" />
+      <Label fx:id="estadoActual" layoutX="173.0" layoutY="236.0" prefHeight="18.0" prefWidth="194.0" text="Estado Actual:" />
    </children>
 </AnchorPane>
