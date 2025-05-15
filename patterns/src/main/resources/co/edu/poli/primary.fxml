@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="592.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.poli.controlador.controlador">
+   <children>
+      <Label layoutX="43.0" layoutY="40.0" text="Patron Visitor">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="239.0" layoutY="40.0" text="Patron State">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Separator layoutX="165.0" layoutY="21.0" orientation="VERTICAL" prefHeight="366.0" prefWidth="0.0" />
+      <TextField fx:id="descuentoPedido" alignment="CENTER" layoutX="7.0" layoutY="71.0" promptText="Descuento Aplicar" />
+      <Button fx:id="bttAplicar" layoutX="56.0" layoutY="108.0" mnemonicParsing="false" onAction="#clickAplicar" text="Aplicar" />
+      <Label layoutX="17.0" layoutY="149.0" text="Descuento Por Producto" />
+      <TextField fx:id="descripcionProducto" alignment="CENTER" layoutX="7.0" layoutY="174.0" promptText="Descripcion de Producto" />
+      <Button fx:id="bttAplicarProducto" layoutX="55.0" layoutY="239.0" mnemonicParsing="false" onAction="#clickProducto" text="Aplicar" />
+      <TextField fx:id="descuentoProducto" alignment="CENTER" layoutX="7.0" layoutY="204.0" promptText="Descuento Aplicar" />
+      <Separator layoutX="374.0" layoutY="17.0" orientation="VERTICAL" prefHeight="366.0" prefWidth="6.0" />
+      <Label layoutX="433.0" layoutY="40.0" text="Patron Mediator">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="390.0" layoutY="63.0" text="Nuevo Cliente" />
+      <TextField fx:id="nombreCliente" layoutX="391.0" layoutY="84.0" promptText="Nombre Nuevo Cliente" />
+      <TextField fx:id="correoCliente" layoutX="390.0" layoutY="121.0" promptText="Email de " />
+      <Label layoutX="390.0" layoutY="192.0" text="Agregar Productos" />
+      <TextField fx:id="descripcionNuevo" layoutX="391.0" layoutY="219.0" promptText="Descripcion Prodcuto" />
+      <TextField fx:id="precioNuevo" layoutX="390.0" layoutY="256.0" promptText="Precio de " />
+      <Button fx:id="bttAgregarProducto" layoutX="409.0" layoutY="294.0" mnemonicParsing="false" onAction="#clickAgregarProducto" text="Agregar al Pedido" />
+      <Button fx:id="bttRealizarPedido" disable="true" layoutX="415.0" layoutY="332.0" mnemonicParsing="false" onAction="#clickRealizarPedido" text="Realizar Pedido" />
+      <Button fx:id="bttRegistrarCliente" layoutX="411.0" layoutY="156.0" mnemonicParsing="false" onAction="#clickRegistrar" text="Registrar Cliente" />
+      <Label layoutX="191.0" layoutY="63.0" text="Pedido #1" />
+      <Button fx:id="bttPagar" layoutX="201.0" layoutY="84.0" mnemonicParsing="false" onAction="#clickPagar" text="Pagar" />
+      <Button fx:id="bttEnviar" layoutX="201.0" layoutY="121.0" mnemonicParsing="false" onAction="#clickEnviar" text="Enviar" />
+      <Button fx:id="bttEntregar" layoutX="201.0" layoutY="156.0" mnemonicParsing="false" onAction="#clickEEntregar" text="Entregar" />
+      <Button fx:id="bttReiniciar" layoutX="201.0" layoutY="197.0" mnemonicParsing="false" onAction="#clickReiniciar" text="Reiniciar" />
+      <Separator layoutX="174.0" layoutY="189.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
